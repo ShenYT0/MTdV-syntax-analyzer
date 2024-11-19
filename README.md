@@ -10,9 +10,23 @@ Yutian Shen [@ShenYT0](https://github.com/ShenYT0)
 
 ### Fonctionnalités
 
-- Vérification de la syntaxe des programmes MTdV
+- Vérification de la syntaxe des programmes MTdV et transformer la structure du programme en une graphe
 - Signalement des erreurs de syntaxe avec des messages clairs
-- Support pour les structures de contrôle et les expressions complexes
+- Sauvegarder la structure du diagramme dans un fichier json et générer une image de visualisation
+
+### Règles de MTdV:
+| Instruction | Sémantique                                                                                                                                                        |
+|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **I**       | affiche l’état de la machine                                                                                                                                    |
+| **P**       | « pause », interrompt temporairement l’exécution du programme ; celle-ci reprend une fois que l’utilisateur a tapé sur une touche du clavier en réponse au prompt affiché. |
+| **G, D**    | déplace la tête de lecture respectivement d’une position à Gauche, à Droite                                                                                      |
+| **0, 1**    | écrit respectivement un 0 (case vide) ou un 1 (bâton) à l’emplacement de la tête de lecture                                                                      |
+| **si (0)**  | si la tête de lecture est sur une case vide alors les instructions x1, x2, ... sont exécutées en séquence, sinon exécute la première instruction qui suit l’accolade fermante } |
+| **si (1)**  | même chose dans le cas où la tête de lecture est positionnée sur un bâton                                                                                       |
+| **boucle**  | répète la séquence d’instructions x1, x2 ..., jusqu’à ce que l’une d’elle soit l’instruction fin                                                                 |
+| **fin**     | rompt le cycle de répétition d’une boucle en faisant exécuter la première instruction qui suit l’accolade fermante de la première boucle contenant l’instruction fin ; si fin n’est contenue dans aucune boucle alors le programme s’arrête. |
+| **%**       | définit une ligne de commentaire non exécutable                                                                                                                 |
+| **#**       | marqueur de fin de fichier requis comme dernière instruction                                                                                                    |                                                                                                |
 
 ### Prérequis
 
