@@ -16,6 +16,7 @@ fin	rompt le cycle de répétition d’une boucle en faisant exécuter la premi�
 '''
 
 import argparse
+import chardet
 from dataclasses import dataclass
 import json
 import os
@@ -219,20 +220,20 @@ def main():
 	parser.add_argument('-o', '--output', type=str, help='output file')
 	args = parser.parse_args()
 
-	input_filename, input_extension = os.path.splitext(args.input)
+	input_filename, input_extension = os.path.splitext(os.path.basename(args.input))
 
 	if not args.output:
-		output_filename = input_filename + '.png'
+		output_path = input_filename
 	else:
-		output_filename = args.output
+		output_path = args.output + '/' + input_filename
 
-	with open(args.input, 'r') as f:
+	with open(args.input, 'r', encoding="iso-8859-1") as f:
 		text = f.read()
 		mtdv = MTdV(text)
-		print(mtdv.tokens)
-		print(mtdv.nodes)
-		mtdv.generate_json(input_filename)
-		mtdv.generate_graph(output_filename)
+		# print(mtdv.tokens)
+		# print(mtdv.nodes)
+		mtdv.generate_json(output_path)
+		mtdv.generate_graph(output_path + '.png')
 	return
 
 if __name__ == "__main__":

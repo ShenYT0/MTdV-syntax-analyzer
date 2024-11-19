@@ -1,51 +1,3 @@
-# MTdV-syntax-analyzer
-## Présentation du projet
-
-Ce projet est un analyseur syntaxique pour l'inscription MTdV. Il a pour objectif de vérifier la syntaxe des programmes écrits dans ce langage et de signaler les erreurs éventuelles. Les résultats de l'analyse sont également stockés dans un fichier json et la structure du programme est visualisée sous la forme d'une image png.
-
-## membre du groupe
-Siman Chen [@simannnc](https://github.com/simannnc)
-
-Yutian Shen [@ShenYT0](https://github.com/ShenYT0)
-
-### Fonctionnalités
-
-- Vérification de la syntaxe des programmes MTdV
-- Signalement des erreurs de syntaxe avec des messages clairs
-- Support pour les structures de contrôle et les expressions complexes
-
-### Prérequis
-
-- Python 3.9+
-- Bibliothèques nécessaires (voir `requirements.txt`)
-
-### Utilisation
-
-Pour analyser un fichier MTdV, utilisez la commande suivante :
-
-```bash
-python analyzer.py chemin/vers/votre/fichier.TS -o chemin/vous/voulez/enregistrer
-```
-
-### Résultat
-
-Un fichier `json` contient des informations sur le diagramme transformé par le programme, ainsi qu'une image au format `png` qui visualise le diagramme.
-
-> Exemple: pour programme `infini.1.TS`
-```
-%  tourne indéfiniment 
-boucle }
-
-#
-
-```
-Il affiche une image qui présent la graphe:
-
-![graph infini](./analyze_results/infini.1.png)
-
-et un fiche json:
-
-```json
 {
     "nodes": [
         {
@@ -395,4 +347,3 @@ et un fiche json:
         }
     ]
 }
-```

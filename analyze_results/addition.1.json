@@ -1,51 +1,3 @@
-# MTdV-syntax-analyzer
-## Présentation du projet
-
-Ce projet est un analyseur syntaxique pour l'inscription MTdV. Il a pour objectif de vérifier la syntaxe des programmes écrits dans ce langage et de signaler les erreurs éventuelles. Les résultats de l'analyse sont également stockés dans un fichier json et la structure du programme est visualisée sous la forme d'une image png.
-
-## membre du groupe
-Siman Chen [@simannnc](https://github.com/simannnc)
-
-Yutian Shen [@ShenYT0](https://github.com/ShenYT0)
-
-### Fonctionnalités
-
-- Vérification de la syntaxe des programmes MTdV
-- Signalement des erreurs de syntaxe avec des messages clairs
-- Support pour les structures de contrôle et les expressions complexes
-
-### Prérequis
-
-- Python 3.9+
-- Bibliothèques nécessaires (voir `requirements.txt`)
-
-### Utilisation
-
-Pour analyser un fichier MTdV, utilisez la commande suivante :
-
-```bash
-python analyzer.py chemin/vers/votre/fichier.TS -o chemin/vous/voulez/enregistrer
-```
-
-### Résultat
-
-Un fichier `json` contient des informations sur le diagramme transformé par le programme, ainsi qu'une image au format `png` qui visualise le diagramme.
-
-> Exemple: pour programme `infini.1.TS`
-```
-%  tourne indéfiniment 
-boucle }
-
-#
-
-```
-Il affiche une image qui présent la graphe:
-
-![graph infini](./analyze_results/infini.1.png)
-
-et un fiche json:
-
-```json
 {
     "nodes": [
         {
@@ -60,7 +12,7 @@ et un fiche json:
         },
         {
             "id": 1,
-            "inst": "move left",
+            "inst": "print machine state",
             "edges": [
                 [
                     2,
@@ -70,57 +22,73 @@ et un fiche json:
         },
         {
             "id": 2,
-            "inst": "write 1",
+            "inst": "loop",
             "edges": [
                 [
                     3,
-                    ""
+                    "start loop"
+                ],
+                [
+                    5,
+                    "end loop"
                 ]
             ]
         },
         {
             "id": 3,
-            "inst": "move left",
+            "inst": "if read 0",
             "edges": [
                 [
+                    2,
+                    "break"
+                ],
+                [
                     4,
-                    ""
+                    "false"
                 ]
             ]
         },
         {
             "id": 4,
-            "inst": "write 1",
+            "inst": "move right",
             "edges": [
                 [
-                    5,
-                    ""
+                    2,
+                    "continue"
                 ]
             ]
         },
         {
             "id": 5,
-            "inst": "move left",
+            "inst": "loop",
             "edges": [
                 [
                     6,
-                    ""
+                    "start loop"
+                ],
+                [
+                    18,
+                    "end loop"
                 ]
             ]
         },
         {
             "id": 6,
-            "inst": "write 0",
+            "inst": "loop",
             "edges": [
                 [
                     7,
-                    ""
+                    "start loop"
+                ],
+                [
+                    9,
+                    "end loop"
                 ]
             ]
         },
         {
             "id": 7,
-            "inst": "move left",
+            "inst": "move right",
             "edges": [
                 [
                     8,
@@ -130,17 +98,21 @@ et un fiche json:
         },
         {
             "id": 8,
-            "inst": "write 1",
+            "inst": "if read 1",
             "edges": [
                 [
-                    9,
-                    ""
+                    6,
+                    "break"
+                ],
+                [
+                    6,
+                    "continue"
                 ]
             ]
         },
         {
             "id": 9,
-            "inst": "move left",
+            "inst": "write 0",
             "edges": [
                 [
                     10,
@@ -150,7 +122,7 @@ et un fiche json:
         },
         {
             "id": 10,
-            "inst": "write 1",
+            "inst": "move right",
             "edges": [
                 [
                     11,
@@ -160,25 +132,29 @@ et un fiche json:
         },
         {
             "id": 11,
-            "inst": "loop",
+            "inst": "if read 0",
             "edges": [
                 [
-                    12,
-                    "start loop"
+                    5,
+                    "break"
                 ],
                 [
-                    32,
-                    "end of file"
+                    12,
+                    "false"
                 ]
             ]
         },
         {
             "id": 12,
-            "inst": "write 0",
+            "inst": "loop",
             "edges": [
                 [
                     13,
-                    ""
+                    "start loop"
+                ],
+                [
+                    15,
+                    "end loop"
                 ]
             ]
         },
@@ -194,17 +170,21 @@ et un fiche json:
         },
         {
             "id": 14,
-            "inst": "write 1",
+            "inst": "if read 1",
             "edges": [
                 [
-                    15,
-                    ""
+                    12,
+                    "break"
+                ],
+                [
+                    12,
+                    "continue"
                 ]
             ]
         },
         {
             "id": 15,
-            "inst": "move left",
+            "inst": "move right",
             "edges": [
                 [
                     16,
@@ -224,10 +204,20 @@ et un fiche json:
         },
         {
             "id": 17,
+            "inst": "move right",
+            "edges": [
+                [
+                    5,
+                    "continue"
+                ]
+            ]
+        },
+        {
+            "id": 18,
             "inst": "loop",
             "edges": [
                 [
-                    18,
+                    19,
                     "start loop"
                 ],
                 [
@@ -237,18 +227,8 @@ et un fiche json:
             ]
         },
         {
-            "id": 18,
-            "inst": "move right",
-            "edges": [
-                [
-                    19,
-                    ""
-                ]
-            ]
-        },
-        {
             "id": 19,
-            "inst": "move right",
+            "inst": "move left",
             "edges": [
                 [
                     20,
@@ -261,28 +241,32 @@ et un fiche json:
             "inst": "if read 1",
             "edges": [
                 [
-                    17,
+                    18,
                     "break"
                 ],
                 [
-                    17,
+                    18,
                     "continue"
                 ]
             ]
         },
         {
             "id": 21,
-            "inst": "write 0",
+            "inst": "loop",
             "edges": [
                 [
                     22,
-                    ""
+                    "start loop"
+                ],
+                [
+                    24,
+                    "end loop"
                 ]
             ]
         },
         {
             "id": 22,
-            "inst": "move right",
+            "inst": "move left",
             "edges": [
                 [
                     23,
@@ -292,11 +276,15 @@ et un fiche json:
         },
         {
             "id": 23,
-            "inst": "write 1",
+            "inst": "if read 0",
             "edges": [
                 [
-                    24,
-                    ""
+                    21,
+                    "break"
+                ],
+                [
+                    21,
+                    "continue"
                 ]
             ]
         },
@@ -312,87 +300,18 @@ et un fiche json:
         },
         {
             "id": 25,
-            "inst": "write 1",
+            "inst": "print machine state",
             "edges": [
                 [
                     26,
-                    ""
+                    "end of file"
                 ]
             ]
         },
         {
             "id": 26,
-            "inst": "loop",
-            "edges": [
-                [
-                    27,
-                    "start loop"
-                ],
-                [
-                    30,
-                    "end loop"
-                ]
-            ]
-        },
-        {
-            "id": 27,
-            "inst": "move left",
-            "edges": [
-                [
-                    28,
-                    ""
-                ]
-            ]
-        },
-        {
-            "id": 28,
-            "inst": "move left",
-            "edges": [
-                [
-                    29,
-                    ""
-                ]
-            ]
-        },
-        {
-            "id": 29,
-            "inst": "if read 1",
-            "edges": [
-                [
-                    26,
-                    "break"
-                ],
-                [
-                    26,
-                    "continue"
-                ]
-            ]
-        },
-        {
-            "id": 30,
-            "inst": "print machine state",
-            "edges": [
-                [
-                    31,
-                    ""
-                ]
-            ]
-        },
-        {
-            "id": 31,
-            "inst": "pause",
-            "edges": [
-                [
-                    11,
-                    "continue"
-                ]
-            ]
-        },
-        {
-            "id": 32,
             "inst": "end",
             "edges": []
         }
     ]
 }
-```
