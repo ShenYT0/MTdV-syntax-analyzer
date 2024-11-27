@@ -1,0 +1,33 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "inst": "start",
+            "edges": [
+                [
+                    1,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 1,
+            "inst": "loop",
+            "edges": [
+                [
+                    1,
+                    "continue"
+                ],
+                [
+                    2,
+                    "end of file"
+                ]
+            ]
+        },
+        {
+            "id": 2,
+            "inst": "end",
+            "edges": []
+        }
+    ]
+}

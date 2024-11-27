@@ -1,0 +1,127 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "inst": "start",
+            "edges": [
+                [
+                    1,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 1,
+            "inst": "print machine state",
+            "edges": [
+                [
+                    2,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 2,
+            "inst": "loop",
+            "edges": [
+                [
+                    3,
+                    "start loop"
+                ],
+                [
+                    5,
+                    "end loop"
+                ]
+            ]
+        },
+        {
+            "id": 3,
+            "inst": "if read 0",
+            "edges": [
+                [
+                    2,
+                    "break"
+                ],
+                [
+                    4,
+                    "false"
+                ]
+            ]
+        },
+        {
+            "id": 4,
+            "inst": "move right",
+            "edges": [
+                [
+                    2,
+                    "continue"
+                ]
+            ]
+        },
+        {
+            "id": 5,
+            "inst": "write 1",
+            "edges": [
+                [
+                    6,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 6,
+            "inst": "move right",
+            "edges": [
+                [
+                    7,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 7,
+            "inst": "write 1",
+            "edges": [
+                [
+                    8,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 8,
+            "inst": "move right",
+            "edges": [
+                [
+                    9,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 9,
+            "inst": "write 1",
+            "edges": [
+                [
+                    10,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 10,
+            "inst": "print machine state",
+            "edges": [
+                [
+                    11,
+                    "end of file"
+                ]
+            ]
+        },
+        {
+            "id": 11,
+            "inst": "end",
+            "edges": []
+        }
+    ]
+}

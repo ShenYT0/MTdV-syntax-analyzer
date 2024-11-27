@@ -1,0 +1,328 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "inst": "start",
+            "edges": [
+                [
+                    1,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 1,
+            "inst": "print machine state",
+            "edges": [
+                [
+                    2,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 2,
+            "inst": "if read 0",
+            "edges": [
+                [
+                    3,
+                    "program finished"
+                ],
+                [
+                    4,
+                    "false"
+                ]
+            ]
+        },
+        {
+            "id": 3,
+            "inst": "finish",
+            "edges": []
+        },
+        {
+            "id": 4,
+            "inst": "write 0",
+            "edges": [
+                [
+                    5,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 5,
+            "inst": "loop",
+            "edges": [
+                [
+                    6,
+                    "start loop"
+                ],
+                [
+                    26,
+                    "end loop"
+                ]
+            ]
+        },
+        {
+            "id": 6,
+            "inst": "print machine state",
+            "edges": [
+                [
+                    7,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 7,
+            "inst": "move right",
+            "edges": [
+                [
+                    8,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 8,
+            "inst": "if read 0",
+            "edges": [
+                [
+                    5,
+                    "break"
+                ],
+                [
+                    9,
+                    "false"
+                ]
+            ]
+        },
+        {
+            "id": 9,
+            "inst": "write 0",
+            "edges": [
+                [
+                    10,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 10,
+            "inst": "loop",
+            "edges": [
+                [
+                    11,
+                    "start loop"
+                ],
+                [
+                    13,
+                    "end loop"
+                ]
+            ]
+        },
+        {
+            "id": 11,
+            "inst": "move right",
+            "edges": [
+                [
+                    12,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 12,
+            "inst": "if read 0",
+            "edges": [
+                [
+                    10,
+                    "break"
+                ],
+                [
+                    10,
+                    "continue"
+                ]
+            ]
+        },
+        {
+            "id": 13,
+            "inst": "loop",
+            "edges": [
+                [
+                    14,
+                    "start loop"
+                ],
+                [
+                    16,
+                    "end loop"
+                ]
+            ]
+        },
+        {
+            "id": 14,
+            "inst": "move right",
+            "edges": [
+                [
+                    15,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 15,
+            "inst": "if read 0",
+            "edges": [
+                [
+                    13,
+                    "break"
+                ],
+                [
+                    13,
+                    "continue"
+                ]
+            ]
+        },
+        {
+            "id": 16,
+            "inst": "write 1",
+            "edges": [
+                [
+                    17,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 17,
+            "inst": "move right",
+            "edges": [
+                [
+                    18,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 18,
+            "inst": "write 1",
+            "edges": [
+                [
+                    19,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 19,
+            "inst": "write 1",
+            "edges": [
+                [
+                    20,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 20,
+            "inst": "loop",
+            "edges": [
+                [
+                    21,
+                    "start loop"
+                ],
+                [
+                    23,
+                    "end loop"
+                ]
+            ]
+        },
+        {
+            "id": 21,
+            "inst": "move left",
+            "edges": [
+                [
+                    22,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 22,
+            "inst": "if read 0",
+            "edges": [
+                [
+                    20,
+                    "break"
+                ],
+                [
+                    20,
+                    "continue"
+                ]
+            ]
+        },
+        {
+            "id": 23,
+            "inst": "loop",
+            "edges": [
+                [
+                    24,
+                    "start loop"
+                ],
+                [
+                    5,
+                    "continue"
+                ]
+            ]
+        },
+        {
+            "id": 24,
+            "inst": "move left",
+            "edges": [
+                [
+                    25,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 25,
+            "inst": "if read 0",
+            "edges": [
+                [
+                    23,
+                    "break"
+                ],
+                [
+                    23,
+                    "continue"
+                ]
+            ]
+        },
+        {
+            "id": 26,
+            "inst": "move right",
+            "edges": [
+                [
+                    27,
+                    ""
+                ]
+            ]
+        },
+        {
+            "id": 27,
+            "inst": "print machine state",
+            "edges": [
+                [
+                    28,
+                    "end of file"
+                ]
+            ]
+        },
+        {
+            "id": 28,
+            "inst": "end",
+            "edges": []
+        }
+    ]
+}

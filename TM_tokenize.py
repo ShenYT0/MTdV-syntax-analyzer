@@ -223,18 +223,33 @@ def main():
 	input_filename, input_extension = os.path.splitext(os.path.basename(args.input))
 
 	if not args.output:
-		output_path = input_filename
+		output_path = './'
 	else:
-		output_path = args.output + '/' + input_filename
-
-	with open(args.input, 'r', encoding="iso-8859-1") as f:
-		text = f.read()
-		mtdv = MTdV(text)
-		# print(mtdv.tokens)
-		# print(mtdv.nodes)
-		mtdv.generate_json(output_path)
-		mtdv.generate_graph(output_path + '.png')
-	return
+		output_path = args.output + '/'
+  
+	# verify input is file or folder
+	if os.path.isfile(args.input):
+		with open(args.input, 'r', encoding="iso-8859-1") as f:
+			text = f.read()
+			mtdv = MTdV(text)
+			# print(mtdv.tokens)
+			# print(mtdv.nodes)
+			mtdv.generate_json(output_path + input_filename)
+			mtdv.generate_graph(output_path + input_filename +'.png')
+		return
+	elif os.path.isdir(args.input):
+		for file in os.listdir(args.input):
+			with open(args.input + '/' + file, 'r', encoding="iso-8859-1") as f:
+				if os.path.splitext(file)[-1] in ['.ts', '.TS']:
+					text = f.read()
+					mtdv = MTdV(text)
+					# print(mtdv.tokens)
+					# print(mtdv.nodes)
+					mtdv.generate_json(output_path + '/' + file)
+					mtdv.generate_graph(output_path + '/' + file + '.png')
+		return
+	else:
+		raise ValueError(f"Invalid input: {args.input}")
 
 if __name__ == "__main__":
 	main()
